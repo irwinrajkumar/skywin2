@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'color code.dart';
 
 import 'package:flutter/material.dart';
 import 'package:irwin/viewrepot.dart';
@@ -90,6 +91,7 @@ class _SubdealerState extends State<Subdealer> {
   }
 
   Widget build(BuildContext context) {
+    mediaSize(context);
     return SafeArea(
         child: Scaffold(
             backgroundColor: Color.fromARGB(255, 238, 240, 237),
@@ -100,6 +102,7 @@ class _SubdealerState extends State<Subdealer> {
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
@@ -113,66 +116,61 @@ class _SubdealerState extends State<Subdealer> {
                                 // print(nameController.text);
                                 // print(passwordController.text);
                               }),
+                          CircleAvatar(
+                              backgroundColor: Color.fromARGB(255, 118, 218, 4),
+                              child: widget.lastname != ''
+                                  ? Text(
+                                      "${widget.lastname[0]}${widget.lastname[1]}"
+                                          .toUpperCase(),
+                                      style: TextStyle(
+                                          fontSize: 17, color: Colors.black),
+                                    )
+                                  : Container()),
+                          TextButton(
+                            onPressed: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const Admininput()),
+                              // );
+                            },
+                            child: Text(
+                              '${widget.lastname}'.toString(),
+                              // "Subdealer",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
+                            ),
+                          ),
                         ],
                       ),
-                      CircleAvatar(
-                          backgroundColor: Color.fromARGB(255, 118, 218, 4),
-                          child: widget.lastname != ''
-                              ? Text(
-                                  "${widget.lastname[0]}${widget.lastname[1]}"
-                                      .toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 17, color: Colors.black),
-                                )
-                              : Container()),
-                      TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => const Admininput()),
-                          // );
-                        },
-                        child: Text(
-                          '${widget.lastname}'.toString(),
-                          // "Subdealer",
-                          style:
-                              TextStyle(fontSize: 20, color: Colors.black),
-                        ),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.only(left: 120),
-                        child: Row(
-                          children: [
-                            IconButton(
-                              icon: Image(
-                                  image: AssetImage(
-                                "assets/pdf.png",
-                              )),
-                              onPressed: () => openfile(
-                                  url: 'http://194.163.43.178:8000/report',
-                                  filename: 'report'),
-                              // Navigator.pop(context);
-                              // print(nameController.text);
-                              // print(passwordController.text);
-                            ),
-                          ],
-                        ),
-                      ),
-
-// if(calldata != null)
-                      //  SizedBox(width: 10),
-                      new IconButton(
-                        icon: new Image.asset('assets/call.png'),
-                        onPressed: () async {
-                          final call = Uri.parse(
-                              'tel:+91 ${widget.mobilenum.toString()}');
-                          if (await canLaunchUrl(call)) {
-                            launchUrl(call);
-                          } else {
-                            throw 'Could not launch $call';
-                          }
-                        },
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Image(
+                                image: AssetImage(
+                              "assets/pdf.png",
+                            )),
+                            onPressed: () => openfile(
+                                url: 'http://194.163.43.178:8000/report',
+                                filename: 'report'),
+                            // Navigator.pop(context);
+                            // print(nameController.text);
+                            // print(passwordController.text);
+                          ),
+                          // if(calldata != null)
+                          //  SizedBox(width: 10),
+                          IconButton(
+                            icon: new Image.asset('assets/call.png'),
+                            onPressed: () async {
+                              final call = Uri.parse(
+                                  'tel:+91 ${widget.mobilenum.toString()}');
+                              if (await canLaunchUrl(call)) {
+                                launchUrl(call);
+                              } else {
+                                throw 'Could not launch $call';
+                              }
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -253,9 +251,9 @@ class _SubdealerState extends State<Subdealer> {
                                                   ),
                                                   SizedBox(width: 10),
                                                   Text(
-                                                    'You will get',
+                                                    'பெற வேண்டியது',
                                                     style: TextStyle(
-                                                      fontSize: 15,
+                                                      fontSize: 8,
                                                     ),
                                                   )
                                                 ],
@@ -289,7 +287,8 @@ class _SubdealerState extends State<Subdealer> {
                                               color: Colors.black,
                                               blurRadius: 5.0,
                                             ),
-                                          ]),
+                                          ]
+                                          ),
                                       child: Container(
                                         child: Center(
                                           child: Row(
@@ -332,9 +331,9 @@ class _SubdealerState extends State<Subdealer> {
                                                   ),
                                                   SizedBox(width: 10),
                                                   Text(
-                                                    'You will give',
+                                                    'கொடுக்க வேண்டியது',
                                                     style: TextStyle(
-                                                      fontSize: 15,
+                                                      fontSize: 8,
                                                     ),
                                                   )
                                                 ],
@@ -346,86 +345,6 @@ class _SubdealerState extends State<Subdealer> {
                                     ),
                                   ),
 
-                                  // SingleChildScrollView(
-                                  //   child: Container(
-                                  //       child: Center(
-                                  //           child: Container(
-                                  //               child: Padding(
-                                  //                   padding: const EdgeInsets.all(14.0),
-                                  //                   child: Column(children: [
-                                  //                     Row(children: [
-                                  //                       Flexible(
-                                  //                         flex: 1,
-                                  //                         fit: FlexFit.tight,
-                                  //                         child: Container(
-                                  //                           width: 150,
-                                  //                           height: 70,
-                                  //                           decoration: BoxDecoration(
-                                  //                             color: Colors.white,
-                                  //                           ),
-                                  //                           child: Padding(
-                                  //                             padding: const EdgeInsets.all(8.0),
-                                  //                             child: Row(
-                                  //                               mainAxisAlignment:
-                                  //                                   MainAxisAlignment.spaceBetween,
-                                  //                               children: [
-                                  //                                 Row(
-                                  //                                   // mainAxisSize: MainAxisSize.max,
-
-                                  //                                   children: <Widget>[
-                                  //                                     Image(
-                                  //                                         image: AssetImage(
-                                  //                                             "assets/fill.png")),
-                                  //                                     SizedBox(
-                                  //                                       width: 10,
-                                  //                                     ),
-                                  //                                     Text(
-                                  //                                       '${balancedata.toString()[0]}' ==
-                                  //                                               '-'
-                                  //                                           ? 'You will get'
-                                  //                                           : 'you will give',
-                                  //                                       style: TextStyle(
-                                  //                                         fontSize: 20,
-                                  //                                       ),
-                                  //                                     ),
-                                  //                                   ],
-                                  //                                 ),
-                                  //                                 Row(
-                                  //                                   mainAxisAlignment:
-                                  //                                       MainAxisAlignment.end,
-                                  //                                   children: [
-                                  //                                     Text(
-                                  //                                       '₹',
-                                  //                                       style: TextStyle(
-                                  //                                           fontSize: 22,
-                                  //                                           color:
-                                  //                                               '${balancedata.toString()[0]}' ==
-                                  //                                                       '-'
-                                  //                                                   ? Colors.red
-                                  //                                                   : Colors.green),
-                                  //                                     ),
-                                  //                                     Text(
-                                  //                                       '${balancedata.toString()[0]}' ==
-                                  //                                               '-'
-                                  //                                           ? '${balancedata.toString().substring(1)}'
-                                  //                                           : '$balancedata',
-                                  //                                       style: TextStyle(
-                                  //                                           fontSize: 22,
-                                  //                                           color:
-                                  //                                               '${balancedata.toString()[0]}' ==
-                                  //                                                       '-'
-                                  //                                                   ? Colors.red
-                                  //                                                   : Colors.green),
-                                  //                                     ),
-                                  //                                   ],
-                                  //                                 ),
-                                  //                               ],
-                                  //                             ),
-                                  //                           ),
-                                  //                         ),
-                                  //                       ),
-
-                                  // SizedBox(
                                   //   width: 20,
                                   // ),
                                   // Flexible(
@@ -480,13 +399,6 @@ class _SubdealerState extends State<Subdealer> {
 
                                 Container(
                                   padding: EdgeInsets.all(15),
-                                  // margin: EdgeInsets.fromLTRB(
-                                  //   0,
-                                  //   0,
-                                  //   0,
-                                  //   0,
-                                  // ),
-                                  // height: 45,
                                   width:
                                       MediaQuery.of(context).size.width * .89,
                                   decoration: BoxDecoration(
@@ -499,19 +411,12 @@ class _SubdealerState extends State<Subdealer> {
                                           blurRadius: 5.0,
                                         ),
                                       ]),
-
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        // mainAxisSize: MainAxisSize.max,
-                                        // mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
-                                          // Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-                                          // hintText:
-                                          //     '${_dateTime.day}-${_dateTime.month}-${_dateTime.year}',
-
                                           Text(
                                             'ENTRIES',
                                             style: TextStyle(
@@ -549,10 +454,10 @@ class _SubdealerState extends State<Subdealer> {
                                 ),
 
                                 SizedBox(
-                                  height: 0,
+                                  height: 10,
                                 ),
                                 Container(
-                                  height: Get.height / 1.7,
+                                  height: height_ / 1.7,
                                   // width: 360,
                                   child: ListView.builder(
                                       itemCount: fetchdata.length,
@@ -789,6 +694,9 @@ class _SubdealerState extends State<Subdealer> {
                                                 ],
                                               ),
                                             ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
                                           )
                                         ]);
                                       }),

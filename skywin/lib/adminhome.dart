@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:irwin/adduser.dart';
+import 'package:irwin/color%20code.dart';
 import 'package:irwin/subdealerhome.dart';
 import 'package:irwin/subdealerquate.dart';
 
 import 'adminchangepassword.dart';
 import 'admineditprofile.dart';
 import 'adminsubdealerlist.dart';
+import 'drawer.dart';
 import 'main.dart';
 import 'viewrepot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +49,7 @@ class _adminhomeState extends State<adminhome> {
 
   @override
   Widget build(BuildContext context) {
+    mediaSize(context);
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 238, 237, 237),
         drawer: Drawer(
@@ -57,57 +60,64 @@ class _adminhomeState extends State<adminhome> {
                 height: 80,
                 child: DrawerHeader(
                     child: Column(children: [
-                  Row(children: [
-                    CircleAvatar(
-                      backgroundColor: Color.fromARGB(255, 118, 218, 4),
-                      child: TextButton(
-                          onPressed: () {
-                            // Navigator.of(context).pop();
-                            // Navigator.push(context,MaterialPageRoute(builder: (context) => const adminprofile()),);
-                          },
-                          child: lastname != null
-                              ? Text(
-                                  "${lastname[0]}${lastname[1]}".toUpperCase(),
-                                )
-                              : Container()),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('${lastname}'.toString(),
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 73, 34, 34),
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    Container(
-                      // height: 35,
-                      width: 65,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ElevatedButton(
-                        // color: Color.fromARGB(255, 12, 12, 12),
-                        child: const Text(
-                          'Edit',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 219, 217, 217)),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(children: [
+                        CircleAvatar(
+                          backgroundColor: Color.fromARGB(255, 118, 218, 4),
+                          child: TextButton(
+                              onPressed: () {
+                                // Navigator.of(context).pop();
+                                // Navigator.push(context,MaterialPageRoute(builder: (context) => const adminprofile()),);
+                              },
+                              child: lastname != null
+                                  ? Text(
+                                      "${lastname[0]}${lastname[1]}"
+                                          .toUpperCase(),
+                                    )
+                                  : Container()),
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const admineditprofile()),
-                          );
-                          // print(nameController.text);
-                          // print(passwordController.text);
-                        },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('${lastname}'.toString(),
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 73, 34, 34),
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                      ]
                       ),
-                    )
-                  ])
+                       Row(
+                         children: [
+                           Container(
+                              // height: 35,
+                              width: 65,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: ElevatedButton(
+                                // color: Color.fromARGB(255, 12, 12, 12),
+                                child: const Text(
+                                  'Edit',
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 219, 217, 217)),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const admineditprofile()),
+                                  );
+                                  // print(nameController.text);
+                                  // print(passwordController.text);
+                                },
+                              ),
+                            ),
+                         ],
+                       )
+                    ],
+                  )
                 ])),
               ),
               ListTile(
@@ -187,11 +197,22 @@ class _adminhomeState extends State<adminhome> {
                         TextButton(
                           child: Text('OK'),
                           onPressed: () async {
-                            var pref = await SharedPreferences.getInstance();
-                            await pref.clear();
-                            Navigator.of(context).pushReplacement(
-                              CupertinoPageRoute(builder: (context) => login()),
-                            );
+                            SharedPreferences pref =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        pref.clear();
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        login()),
+                                                (Route<dynamic> route) =>
+                                                    false);
+                            // var pref = await SharedPreferences.getInstance();
+                            // await pref.clear();
+                            // Navigator.of(context).pushReplacement(
+                            //   CupertinoPageRoute(builder: (context) => login()),
+                            
                           },
                         ),
                       ],
@@ -216,6 +237,7 @@ class _adminhomeState extends State<adminhome> {
           //   backgroundColor: Color.fromARGB(255, 238, 237, 237),
           //   // drawer: NavBar(),
         ),
+        // drawer: DrawerWidget(),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 238, 237, 237),
           elevation: 0,
@@ -253,7 +275,7 @@ class _adminhomeState extends State<adminhome> {
           child: Container(
               child: Center(
                   child: Container(
-                    margin:EdgeInsets.all(15) ,
+                      margin: EdgeInsets.all(15),
                       child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Column(children: [
@@ -262,13 +284,15 @@ class _adminhomeState extends State<adminhome> {
                                 flex: 1,
                                 fit: FlexFit.tight,
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width * .87,
+                                  width:
+                                      MediaQuery.of(context).size.width * .87,
                                   height: 100,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       right: BorderSide(
                                         //                   <--- right side
-                                        color: Color.fromARGB(255, 248, 206, 206),
+                                        color:
+                                            Color.fromARGB(255, 248, 206, 206),
                                         width: 1.0,
                                       ),
                                     ),
@@ -308,11 +332,11 @@ class _adminhomeState extends State<adminhome> {
                                                     ),
                                                 ],
                                               ),
-                                              SizedBox(width: 10),
+                                              SizedBox(width: 8),
                                               Text(
-                                                'You will get',
+                                                'பெற வேண்டியது',
                                                 style: TextStyle(
-                                                  fontSize: 15,
+                                                  fontSize: 10,
                                                 ),
                                               )
                                             ],
@@ -326,13 +350,12 @@ class _adminhomeState extends State<adminhome> {
                               SizedBox(
                                 width: 0,
                               ),
-                              
                               Flexible(
                                 flex: 1,
                                 fit: FlexFit.loose,
                                 child: Container(
-                                  
-                                  width: MediaQuery.of(context).size.width * .44,
+                                  width:
+                                      MediaQuery.of(context).size.width * .44,
                                   height: 100,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -375,9 +398,9 @@ class _adminhomeState extends State<adminhome> {
                                               ),
                                               SizedBox(width: 10),
                                               Text(
-                                                'You will give',
+                                                'கொடுக்க வேண்டியது',
                                                 style: TextStyle(
-                                                  fontSize: 15,
+                                                  fontSize: 8,
                                                 ),
                                               )
                                             ],
@@ -388,7 +411,6 @@ class _adminhomeState extends State<adminhome> {
                                   ),
                                 ),
                               ),
-                              
                             ]),
                             SizedBox(
                               height: 2,
@@ -396,49 +418,48 @@ class _adminhomeState extends State<adminhome> {
                             Row(
                               children: [
                                 Container(
-                                  // height: 40,
-                                  width: MediaQuery.of(context).size.width * .89,
-                                  
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                  // padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: TextButton(
-                                      // color: const Color.fromARGB(
-                                      // 255, 2, 228, 119),
-                                      child: const Text(
-                                        'VIEW REROPT >',
-                                        style: TextStyle(
-                                            fontSize: 17, color: Color.fromARGB(255, 37, 211, 52)),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const viewrepot()),
-                                        );
-                                        // print(nameController.text);
-                                        // print(passwordController.text);
-                                      },
+                                    // height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width * .89,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
                                     ),
-                                  )
-                                  
-                                )
-                                
+                                    // padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 20),
+                                      child: TextButton(
+                                        // color: const Color.fromARGB(
+                                        // 255, 2, 228, 119),
+                                        child: const Text(
+                                          'VIEW REROPT >',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              color: Color.fromARGB(
+                                                  255, 37, 211, 52)),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    viewrepot()),
+                                          );
+                                          // print(nameController.text);
+                                          // print(passwordController.text);
+                                        },
+                                      ),
+                                    ))
                               ],
                             ),
-                            
+
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Row(children: [
                               Container(
                                 padding: EdgeInsets.all(10),
                                 // height: 60,
-                                width: MediaQuery.of(context).size.width * .89,
+                                width: width_ / 1.12,
                                 decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15)),
@@ -485,6 +506,9 @@ class _adminhomeState extends State<adminhome> {
                                 ),
                               ),
                             ]),
+                            SizedBox(
+                              height: 10,
+                            ),
                             // SizedBox(
                             //   height: 0,
                             // ),
@@ -521,7 +545,7 @@ class _adminhomeState extends State<adminhome> {
                             //   ),
                             // ),
                             Container(
-                              height: Get.height / 2,
+                              height: height_ / 1.90,
                               child: ListView.builder(
                                   itemCount: fetchdata.length,
                                   shrinkWrap: true,
@@ -562,10 +586,9 @@ class _adminhomeState extends State<adminhome> {
                                           );
                                         }),
                                         child: Container(
-                                          // margin: new EdgeInsets.symmetric(horizontal: 0),
-                                          // padding: EdgeInsets.symmetric(horizontal: 0),
-                                          // height: 60,
-                                          width: MediaQuery.of(context).size.width * .89,
+                                          height: height_ / 12.0,
+                                          width: width_ / 1.15,
+
                                           // width: 349,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
@@ -618,26 +641,26 @@ class _adminhomeState extends State<adminhome> {
                                                     right: 15),
                                                 child: Row(
                                                   children: [
-                                                    fetchdata[index]['bls'] ==
+                                                    fetchdata[index]['bal'] ==
                                                             null
                                                         ? Text('')
                                                         : Text('₹',
                                                             style: TextStyle(
                                                                 fontSize: 18,
-                                                                color: '${fetchdata[index]["bls"].toString()[0]}' ==
+                                                                color: '${fetchdata[index]["bal"].toString()[0]}' ==
                                                                         '-'
                                                                     ? Colors.red
                                                                     : Colors
                                                                         .green)),
                                                     Text(
-                                                      '${fetchdata[index]["bls"].toString()[0]}' ==
+                                                      '${fetchdata[index]["bal"].toString()[0]}' ==
                                                               '-'
-                                                          ? '${fetchdata[index]["bls"].toString().substring(1)}'
-                                                          : '${fetchdata[index]["bls"].toString()}',
+                                                          ? '${fetchdata[index]["bal"].toString().substring(1)}'
+                                                          : '${fetchdata[index]["bal"].toString()}',
                                                       style: TextStyle(
                                                           fontSize: 18,
                                                           color:
-                                                              '${fetchdata[index]["bls"].toString()[0]}' ==
+                                                              '${fetchdata[index]["bal"].toString()[0]}' ==
                                                                       '-'
                                                                   ? Colors.red
                                                                   : Colors
@@ -650,6 +673,9 @@ class _adminhomeState extends State<adminhome> {
                                           ),
                                         ),
                                       ),
+                                      SizedBox(
+                                        height: 10,
+                                      )
                                     ]);
                                   }),
                             ),
@@ -695,17 +721,8 @@ class _adminhomeState extends State<adminhome> {
   }
 
   Future<void> admindata() async {
-    // var pref = await SharedPreferences.getInstance();
-    // print(widget.userid);
-    // var id = widget.userid;
     var url = "http://194.163.43.178:8000/Total_calculation";
-    // checker(context) async {
-    // var pref=await SharedPreferences.getInstance();
-    //  var customerId= pref.getString('customer_id');
-    //  var episodeid= pref.getString('episode_id');
-    //  var storyid= pref.getString('story_id');
-    //   var page= pref.getString('page');
-    //  print(customerId);
+
     var finalurl = Uri.parse(url);
     var res = await http.get(
       finalurl,
@@ -725,34 +742,4 @@ class _adminhomeState extends State<adminhome> {
       // ad_banner=decodeValue['data']['main_banner'];
     });
   }
-  // Future<void> ddddd() async {
-  //   // var pref = await SharedPreferences.getInstance();
-  //   // print(widget.userid);
-  //   // var id = widget.userid;
-  //   var url = "http://194.163.43.178:8000/Total_calculation/";
-  //   // checker(context) async {
-  //   // var pref=await SharedPreferences.getInstance();
-  //   //  var customerId= pref.getString('customer_id');
-  //   //  var episodeid= pref.getString('episode_id');
-  //   //  var storyid= pref.getString('story_id');
-  //   //   var page= pref.getString('page');
-  //   //  print(customerId);
-  //   var finalurl = Uri.parse(url);
-  //   var res = await http.get(
-  //     finalurl,
-  //     headers: <String, String>{},
-  //   );
-  //   // var pref = await SharedPreferences.getInstance();
-  //   // setState(() {
-  //   //   lastname = pref.getString('username');
-  //   //   print(lastname);
-  //   // }
-  //   // );
-
-  //   var decodeValue = json.decode(res.body);
-  //   setState(() {
-  //     youdata = decodeValue;
-
-  //   });
-  // }
 }

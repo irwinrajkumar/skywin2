@@ -44,6 +44,7 @@ TextEditingController totalamontController = new TextEditingController();
 TextEditingController NetweightController = new TextEditingController();
 TextEditingController DateController = new TextEditingController();
 TextEditingController RemarksController = new TextEditingController();
+
 class SubDealerquote2 extends StatefulWidget {
   var mobiledata;
   String iddata;
@@ -298,8 +299,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                               bags.toString();
                                           GrossweightController.text =
                                               gross.toStringAsFixed(3);
-                                          NetweightController
-                                              .text = (int.parse(
+                                          NetweightController.text = (int.parse(
                                                       GrossweightController
                                                               .text.isEmpty
                                                           ? '0'
@@ -555,8 +555,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                 onChanged: (o) {
                                                                   setState(() {
                                                                     totalamontController
-                                                                        .text = (double.parse(NetweightController.text.isEmpty ? '0' : 
-                                                                        NetweightController.text) *
+                                                                        .text = (double.parse(NetweightController.text.isEmpty ? '0' : NetweightController.text) *
                                                                             int.parse(RateController.text.isEmpty
                                                                                 ? '0'
                                                                                 : RateController.text))
@@ -740,7 +739,8 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                           borderRadius: BorderRadius.circular(0),
                                                                                         ),
                                                                                         child: TextFormField(
-                                                                                          enabled: true,
+                                                                                          readOnly: true,
+
                                                                                           controller: DateController,
                                                                                           decoration: InputDecoration(
                                                                                               fillColor: Colors.white,
@@ -768,112 +768,10 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                     },
                                                                                                     icon: Icon(Icons.calendar_month)),
                                                                                               ),
-                                                                                              // enabled: false,
-
-                                                                                              // border: OutlineInputBorder(
-                                                                                              //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                                                                                              // hintText: 'User Type',
                                                                                               border: InputBorder.none),
                                                                                           // ),
                                                                                         ),
                                                                                       ),
-                                                                                      SizedBox(
-                                                                                                          height: 10,
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          padding: const EdgeInsets.all(0),
-                                                                                                          margin: const EdgeInsets.all(0),
-                                                                                                          child: Column(
-                                                                                                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                                            children: [
-                                                                                                              weightValue.toString() != 'Manual Weight'
-                                                                                                                  ? SizedBox()
-                                                                                                                  : const Text(
-                                                                                                                      'Remark',
-                                                                                                                      style: const TextStyle(fontSize: 20),
-                                                                                                                    ),
-                                                                                                              weightValue.toString() != 'Manual Weight'
-                                                                                                                  ? SizedBox()
-                                                                                                                  : const SizedBox(
-                                                                                                                      height: 10,
-                                                                                                                    ),
-                                                                                                              weightValue.toString() != 'Manual Weight'
-                                                                                                                  ? SizedBox()
-                                                                                                                  : Container(
-                                                                                                                      height: 50,
-                                                                                                                      decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
-                                                                                                                      
-                                                                                                                      child: TextFormField(
-                                                                                                                        controller: RemarksController,
-                                                                                                                        // obscureText: true,
-                                                                                                                        decoration: InputDecoration(
-                                                                                                                          
-                                                                                                                            fillColor: Color.fromARGB(255, 247, 252, 249),
-                                                                                                                            filled: true,
-
-                                                                                                                            // border: OutlineInputBorder(
-                                                                                                                            //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                                                                                                                            // hintText: 'User Type',
-                                                                                                                            border: InputBorder.none),
-                                                                                                                            
-                                                                                                                        // keyboardType: TextInputType.number,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                // SizedBox(
-                                                                                //   height: 0,
-                                                                                // ),
-                                                                                // Container(
-                                                                                //   padding: const EdgeInsets.all(0),
-                                                                                //   margin: const EdgeInsets.all(0),
-                                                                                //   child: Column(
-                                                                                //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                //     children: [
-                                                                                //       weightValue.toString() != 'Direct Weight'
-                                                                                //           ? SizedBox()
-                                                                                //           : Text(
-                                                                                //               'Direct weight',
-                                                                                //               style: TextStyle(fontSize: 20),
-                                                                                //             ),
-                                                                                //       weightValue.toString() != 'Direct Weight'
-                                                                                //           ? SizedBox()
-                                                                                //           : SizedBox(
-                                                                                //               height: 10,
-                                                                                //             ),
-                                                                                //       weightValue.toString() != 'Direct Weight'
-                                                                                //           ? SizedBox()
-                                                                                //           : Container(
-                                                                                //               height: 50,
-                                                                                //               decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
-                                                                                //               // height: 50,
-                                                                                //               child: TextFormField(
-                                                                                //                 // onChanged: (o) {
-                                                                                //                 //   setState(() {
-                                                                                //                 //     totalamontController.text = (int.parse(
-                                                                                //                 //       NetweightController.text.isEmpty ?
-                                                                                //                 //       '0' : NetweightController.text) *
-                                                                                //                 //        int.parse(RateController.text.isEmpty ?
-                                                                                //                 //        '0' : RateController.text)).toString();
-                                                                                //                 //   });
-                                                                                //                 //   NetweightController.clear();
-                                                                                //                 // },
-
-                                                                                //                 controller: DirectWeightController,
-                                                                                //                 // obscureText: true,
-                                                                                //                 decoration: InputDecoration(
-                                                                                //                     fillColor: Color.fromARGB(255, 247, 252, 249),
-                                                                                //                     filled: true,
-
-                                                                                //                     // border: OutlineInputBorder(
-                                                                                //                     //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                                                                                //                     // hintText: 'User Type',
-                                                                                //                     border: InputBorder.none),
-                                                                                //                 keyboardType: TextInputType.number,
-                                                                                //               ),
-                                                                                //             ),
-
-                                                                                //       // const SizedBox(
-                                                                                //       //   height: 0,
-                                                                                //       // ),
                                                                                 SizedBox(
                                                                                   height: 10,
                                                                                 ),
@@ -881,36 +779,25 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                     padding: const EdgeInsets.all(0),
                                                                                     margin: const EdgeInsets.all(0),
                                                                                     child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                                                                                      weightValue.toString() != 'Direct Weight'
+                                                                                      weightValue.toString() != 'Manual Weight'
                                                                                           ? SizedBox()
-                                                                                          : Text(
-                                                                                              'Net Weight (KG)',
-                                                                                              style: TextStyle(fontSize: 20),
+                                                                                          : const Text(
+                                                                                              'Remark',
+                                                                                              style: const TextStyle(fontSize: 20),
                                                                                             ),
-                                                                                      weightValue.toString() != 'Direct Weight'
+                                                                                      weightValue.toString() != 'Manual Weight'
                                                                                           ? SizedBox()
-                                                                                          : SizedBox(
+                                                                                          : const SizedBox(
                                                                                               height: 10,
                                                                                             ),
-                                                                                      weightValue.toString() != 'Direct Weight'
+                                                                                      weightValue.toString() != 'Manual Weight'
                                                                                           ? SizedBox()
                                                                                           : Container(
                                                                                               height: 50,
                                                                                               decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
-                                                                                              // height: 50,
                                                                                               child: TextFormField(
-                                                                                                // onChanged: (o) {
-                                                                                                //   setState(() {
-                                                                                                //     totalamontController.text = (int.parse(NetweightController.text.isEmpty ? '0' : NetweightController.text) * int.parse(RateController.text.isEmpty ? '0' : RateController.text)).toString();
-                                                                                                //   });
-                                                                                                //   NetweightController.clear();
-                                                                                                // },
-
-                                                                                                controller: NetweightController,
+                                                                                                controller: RemarksController,
                                                                                                 // obscureText: true,
-                                                                                                inputFormatters: <TextInputFormatter>[
-                                                                                                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                                                                                                ],
                                                                                                 decoration: InputDecoration(
                                                                                                     fillColor: Color.fromARGB(255, 247, 252, 249),
                                                                                                     filled: true,
@@ -919,10 +806,65 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                     //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
                                                                                                     // hintText: 'User Type',
                                                                                                     border: InputBorder.none),
-                                                                                                keyboardType: TextInputType.number,
+
+                                                                                                // keyboardType: TextInputType.number,
                                                                                               ),
                                                                                             ),
-                                                                                      //     //
+                                                                                      // SizedBox(
+                                                                                      //   height: 0,
+                                                                                      // ),
+                                                                                      // Container(
+                                                                                      //   padding: const EdgeInsets.all(0),
+                                                                                      //   margin: const EdgeInsets.all(0),
+                                                                                      //   child: Column(
+                                                                                      //     crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                      //     children: [
+                                                                                      //       weightValue.toString() != 'Direct Weight'
+                                                                                      //           ? SizedBox()
+                                                                                      //           : Text(
+                                                                                      //               'Direct weight',
+                                                                                      //               style: TextStyle(fontSize: 20),
+                                                                                      //             ),
+                                                                                      //       weightValue.toString() != 'Direct Weight'
+                                                                                      //           ? SizedBox()
+                                                                                      //           : SizedBox(
+                                                                                      //               height: 10,
+                                                                                      //             ),
+                                                                                      //       weightValue.toString() != 'Direct Weight'
+                                                                                      //           ? SizedBox()
+                                                                                      //           : Container(
+                                                                                      //               height: 50,
+                                                                                      //               decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
+                                                                                      //               // height: 50,
+                                                                                      //               child: TextFormField(
+                                                                                      //                 // onChanged: (o) {
+                                                                                      //                 //   setState(() {
+                                                                                      //                 //     totalamontController.text = (int.parse(
+                                                                                      //                 //       NetweightController.text.isEmpty ?
+                                                                                      //                 //       '0' : NetweightController.text) *
+                                                                                      //                 //        int.parse(RateController.text.isEmpty ?
+                                                                                      //                 //        '0' : RateController.text)).toString();
+                                                                                      //                 //   });
+                                                                                      //                 //   NetweightController.clear();
+                                                                                      //                 // },
+
+                                                                                      //                 controller: DirectWeightController,
+                                                                                      //                 // obscureText: true,
+                                                                                      //                 decoration: InputDecoration(
+                                                                                      //                     fillColor: Color.fromARGB(255, 247, 252, 249),
+                                                                                      //                     filled: true,
+
+                                                                                      //                     // border: OutlineInputBorder(
+                                                                                      //                     //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                                                                                      //                     // hintText: 'User Type',
+                                                                                      //                     border: InputBorder.none),
+                                                                                      //                 keyboardType: TextInputType.number,
+                                                                                      //               ),
+                                                                                      //             ),
+
+                                                                                      //       // const SizedBox(
+                                                                                      //       //   height: 0,
+                                                                                      //       // ),
                                                                                       SizedBox(
                                                                                         height: 10,
                                                                                       ),
@@ -932,13 +874,13 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                                                                                             weightValue.toString() != 'Direct Weight'
                                                                                                 ? SizedBox()
-                                                                                                : const Text(
-                                                                                                    'Rate ₹',
-                                                                                                    style: const TextStyle(fontSize: 20),
+                                                                                                : Text(
+                                                                                                    'Net Weight (KG)',
+                                                                                                    style: TextStyle(fontSize: 20),
                                                                                                   ),
                                                                                             weightValue.toString() != 'Direct Weight'
                                                                                                 ? SizedBox()
-                                                                                                : const SizedBox(
+                                                                                                : SizedBox(
                                                                                                     height: 10,
                                                                                                   ),
                                                                                             weightValue.toString() != 'Direct Weight'
@@ -948,16 +890,18 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                     decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
                                                                                                     // height: 50,
                                                                                                     child: TextFormField(
-                                                                                                      onChanged: (o) {
-                                                                                                        setState(() {
-                                                                                                          totalamontController.text = (int.parse(NetweightController.text.isEmpty ? '0' : NetweightController.text) * int.parse(RateController.text.isEmpty ? '0' : RateController.text)).toString();
-                                                                                                        });
-                                                                                                      },
-                                                                                                      controller: RateController,
+                                                                                                      // onChanged: (o) {
+                                                                                                      //   setState(() {
+                                                                                                      //     totalamontController.text = (int.parse(NetweightController.text.isEmpty ? '0' : NetweightController.text) * int.parse(RateController.text.isEmpty ? '0' : RateController.text)).toString();
+                                                                                                      //   });
+                                                                                                      //   NetweightController.clear();
+                                                                                                      // },
+
+                                                                                                      controller: NetweightController,
                                                                                                       // obscureText: true,
-                                                                                                      // inputFormatters: <TextInputFormatter>[
-                                                                                                      //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                                                                                                      // ],
+                                                                                                      inputFormatters: <TextInputFormatter>[
+                                                                                                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                                                                                                      ],
                                                                                                       decoration: InputDecoration(
                                                                                                           fillColor: Color.fromARGB(255, 247, 252, 249),
                                                                                                           filled: true,
@@ -969,9 +913,10 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                       keyboardType: TextInputType.number,
                                                                                                     ),
                                                                                                   ),
-                                                                                            // const SizedBox(
-                                                                                            //   height: 10,
-                                                                                            // ),
+                                                                                            //     //
+                                                                                            SizedBox(
+                                                                                              height: 10,
+                                                                                            ),
                                                                                             Container(
                                                                                                 padding: const EdgeInsets.all(0),
                                                                                                 margin: const EdgeInsets.all(0),
@@ -979,7 +924,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                   weightValue.toString() != 'Direct Weight'
                                                                                                       ? SizedBox()
                                                                                                       : const Text(
-                                                                                                          'total amont',
+                                                                                                          'Rate ₹',
                                                                                                           style: const TextStyle(fontSize: 20),
                                                                                                         ),
                                                                                                   weightValue.toString() != 'Direct Weight'
@@ -994,8 +939,16 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                           decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
                                                                                                           // height: 50,
                                                                                                           child: TextFormField(
-                                                                                                            controller: totalamontController,
+                                                                                                            onChanged: (o) {
+                                                                                                              setState(() {
+                                                                                                                totalamontController.text = (int.parse(NetweightController.text.isEmpty ? '0' : NetweightController.text) * int.parse(RateController.text.isEmpty ? '0' : RateController.text)).toString();
+                                                                                                              });
+                                                                                                            },
+                                                                                                            controller: RateController,
                                                                                                             // obscureText: true,
+                                                                                                            // inputFormatters: <TextInputFormatter>[
+                                                                                                            //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                                                                                                            // ],
                                                                                                             decoration: InputDecoration(
                                                                                                                 fillColor: Color.fromARGB(255, 247, 252, 249),
                                                                                                                 filled: true,
@@ -1007,53 +960,17 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                             keyboardType: TextInputType.number,
                                                                                                           ),
                                                                                                         ),
-                                                                                                  SizedBox(
-                                                                                                    height: 10,
-                                                                                                  ),
-                                                                                                  // Row(
-                                                                                                  //     mainAxisAlignment:
-                                                                                                  //         MainAxisAlignment
-                                                                                                  //             .spaceBetween,
-                                                                                                  //     children: [
-                                                                                                  //       InkWell(
-                                                                                                  //         onTap: () async {
-                                                                                                  //           DateTime?
-                                                                                                  //               newDate =
-                                                                                                  //               await showDatePicker(
-                                                                                                  //             context:
-                                                                                                  //                 context,
-                                                                                                  //             initialDate:
-                                                                                                  //                 date,
-                                                                                                  //             firstDate:
-                                                                                                  //                 DateTime(
-                                                                                                  //                     1900),
-                                                                                                  //             lastDate:
-                                                                                                  //                 DateTime(
-                                                                                                  //                     2100),
-                                                                                                  //           );
-                                                                                                  //           if (newDate ==
-                                                                                                  //               null)
-                                                                                                  //             return;
-                                                                                                  //           setState(() {
-                                                                                                  //             date =
-                                                                                                  //                 newDate;
-                                                                                                  //             seletedDate =
-                                                                                                  //                 '${date.day}/${date.month}/${date.year}';
-                                                                                                  //             print(seletedDate
-                                                                                                  //                 .toString());
-                                                                                                  //           });
-                                                                                                  //         },
-                                                                                                  // child:
+                                                                                                  // const SizedBox(
+                                                                                                  //   height: 10,
+                                                                                                  // ),
                                                                                                   Container(
-                                                                                                    padding: const EdgeInsets.all(0),
-                                                                                                    margin: const EdgeInsets.all(0),
-                                                                                                    child: Column(
-                                                                                                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                                      children: [
+                                                                                                      padding: const EdgeInsets.all(0),
+                                                                                                      margin: const EdgeInsets.all(0),
+                                                                                                      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                                                                                                         weightValue.toString() != 'Direct Weight'
                                                                                                             ? SizedBox()
                                                                                                             : const Text(
-                                                                                                                'Date',
+                                                                                                                'total amont',
                                                                                                                 style: const TextStyle(fontSize: 20),
                                                                                                               ),
                                                                                                         weightValue.toString() != 'Direct Weight'
@@ -1065,45 +982,20 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                             ? SizedBox()
                                                                                                             : Container(
                                                                                                                 height: 50,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  color: Colors.white,
-                                                                                                                  borderRadius: BorderRadius.circular(0),
-                                                                                                                ),
+                                                                                                                decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
+                                                                                                                // height: 50,
                                                                                                                 child: TextFormField(
-                                                                                                                  enabled: true,
-                                                                                                                  controller: DateController,
+                                                                                                                  controller: totalamontController,
+                                                                                                                  // obscureText: true,
                                                                                                                   decoration: InputDecoration(
-                                                                                                                      fillColor: Colors.white,
-                                                                                                                      contentPadding: EdgeInsets.all(13),
-                                                                                                                      // labelText: '${date.year}/${date.month}/${date.day}',
-                                                                                                                      // labelStyle: const TextStyle(fontSize: 16, fontFamily: "palatino", color: Colors.black),
-                                                                                                                      // fillColor: Color.fromARGB(255, 247, 252, 249),
-                                                                                                                      // filled: true,
-                                                                                                                      suffixIcon: Align(
-                                                                                                                        widthFactor: 1.0,
-                                                                                                                        heightFactor: 1.0,
-                                                                                                                        child: IconButton(
-                                                                                                                            onPressed: () async {
-                                                                                                                              DateTime? newDate = await showDatePicker(
-                                                                                                                                context: context,
-                                                                                                                                initialDate: DateTime.now(),
-                                                                                                                                firstDate: DateTime(1900),
-                                                                                                                                lastDate: DateTime.now(),
-                                                                                                                              );
-                                                                                                                              if (newDate == null) return;
-                                                                                                                              setState(() {
-                                                                                                                                date = newDate;
-                                                                                                                                DateController.text = DateFormat('yyyy-MM-dd').format(newDate);
-                                                                                                                              });
-                                                                                                                            },
-                                                                                                                            icon: Icon(Icons.calendar_month)),
-                                                                                                                      ),
-                                                                                                                      // enabled: false,
+                                                                                                                      fillColor: Color.fromARGB(255, 247, 252, 249),
+                                                                                                                      filled: true,
 
                                                                                                                       // border: OutlineInputBorder(
                                                                                                                       //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
                                                                                                                       // hintText: 'User Type',
                                                                                                                       border: InputBorder.none),
+                                                                                                                  keyboardType: TextInputType.number,
                                                                                                                 ),
                                                                                                               ),
                                                                                                         SizedBox(
@@ -1118,7 +1010,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                               weightValue.toString() != 'Direct Weight'
                                                                                                                   ? SizedBox()
                                                                                                                   : const Text(
-                                                                                                                      'Remark',
+                                                                                                                      'Date',
                                                                                                                       style: const TextStyle(fontSize: 20),
                                                                                                                     ),
                                                                                                               weightValue.toString() != 'Direct Weight'
@@ -1130,243 +1022,307 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                                                                                                   ? SizedBox()
                                                                                                                   : Container(
                                                                                                                       height: 50,
-                                                                                                                      decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
-                                                                                                                      
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: Colors.white,
+                                                                                                                        borderRadius: BorderRadius.circular(0),
+                                                                                                                      ),
                                                                                                                       child: TextFormField(
-                                                                                                                        controller: RemarksController,
-                                                                                                                        // obscureText: true,
+                                                                                                                        readOnly: true,
+                                                                                                                        controller: DateController,
                                                                                                                         decoration: InputDecoration(
-                                                                                                                          
-                                                                                                                            fillColor: Color.fromARGB(255, 247, 252, 249),
-                                                                                                                            filled: true,
+                                                                                                                            fillColor: Colors.white,
+                                                                                                                            contentPadding: EdgeInsets.all(13),
+                                                                                                                            // labelText: '${date.year}/${date.month}/${date.day}',
+                                                                                                                            // labelStyle: const TextStyle(fontSize: 16, fontFamily: "palatino", color: Colors.black),
+                                                                                                                            // fillColor: Color.fromARGB(255, 247, 252, 249),
+                                                                                                                            // filled: true,
+                                                                                                                            suffixIcon: Align(
+                                                                                                                              widthFactor: 1.0,
+                                                                                                                              heightFactor: 1.0,
+                                                                                                                              child: IconButton(
+                                                                                                                                  onPressed: () async {
+                                                                                                                                    DateTime? newDate = await showDatePicker(
+                                                                                                                                      context: context,
+                                                                                                                                      initialDate: DateTime.now(),
+                                                                                                                                      firstDate: DateTime(1900),
+                                                                                                                                      lastDate: DateTime.now(),
+                                                                                                                                    );
+                                                                                                                                    if (newDate == null) return;
+                                                                                                                                    setState(() {
+                                                                                                                                      date = newDate;
+                                                                                                                                      DateController.text = DateFormat('yyyy-MM-dd').format(newDate);
+                                                                                                                                    });
+                                                                                                                                  },
+                                                                                                                                  icon: Icon(Icons.calendar_month)),
+                                                                                                                            ),
+                                                                                                                            // enabled: false,
 
                                                                                                                             // border: OutlineInputBorder(
                                                                                                                             //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
                                                                                                                             // hintText: 'User Type',
                                                                                                                             border: InputBorder.none),
-                                                                                                                            
-                                                                                                                        // keyboardType: TextInputType.number,
                                                                                                                       ),
                                                                                                                     ),
-
-                                                                                                              //   ),
-                                                                                                              // ),
-                                                                                                              //       ])
-                                                                                                              //        ) ])
-                                                                                                              //             // ]
-                                                                                                              //             ),
-                                                                                                              //         // )
-                                                                                                              //       ]),
-                                                                                                              //     )
-                                                                                                              //   ]),
-                                                                                                              // ),
-                                                                                                              // const SizedBox(
-                                                                                                              //   height: 10,
-                                                                                                              // ),
-                                                                                                              // Container(
-                                                                                                              //   padding:
-                                                                                                              //       const EdgeInsets.symmetric(horizontal: 160),
-                                                                                                              //   child: Row(children: [
-                                                                                                              //     const Text(
-                                                                                                              //       "OR",
-                                                                                                              //       style: TextStyle(
-                                                                                                              //         fontSize: 20.0,
-                                                                                                              //       ),
-                                                                                                              //     ),
-                                                                                                              //     // Icon(
-                                                                                                              //     //   Icons.arrow_forward,
-                                                                                                              //     //   color: Colors.green,
-                                                                                                              //     // ),
-                                                                                                              //   ]),
-                                                                                                              // ),
-                                                                                                              // const SizedBox(
-                                                                                                              //   height: 20,
-                                                                                                              // ),
-                                                                                                              // Container(
-                                                                                                              //     height: 50,
-                                                                                                              //     width: 5,
-                                                                                                              //     padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
-                                                                                                              //     child: ElevatedButton.icon(
-                                                                                                              //       icon: Icon(
-                                                                                                              //         Icons.camera_enhance,
-                                                                                                              //         color: Colors.green,
-                                                                                                              //         size: 30.0,
-                                                                                                              //       ),
-                                                                                                              //       label: Text(
-                                                                                                              //         'Attach Bill',
-                                                                                                              //         style: TextStyle(fontSize: 17, color: Colors.white),
-                                                                                                              //       ),
-                                                                                                              //       onPressed: () {
-                                                                                                              //         // Share.share('Hello Welcome to FlutterCampus', subject: 'Welcome Message');
-                                                                                                              //       },
-                                                                                                              //       style: ElevatedButton.styleFrom(
-                                                                                                              //         shape: new RoundedRectangleBorder(
-                                                                                                              //           borderRadius: new BorderRadius.circular(0.0),
-                                                                                                              //         ),
-                                                                                                              //       ),
-                                                                                                              //     )),
-                                                                                                              const SizedBox(
-                                                                                                                height: 40,
+                                                                                                              SizedBox(
+                                                                                                                height: 10,
                                                                                                               ),
-                                                                                                              // weightValue.toString() != 'Manual Weight'
-                                                                                                              //                         ? SizedBox()
-                                                                                                              //                         :
                                                                                                               Container(
-                                                                                                                height: 50,
-                                                                                                                width: 110,
-                                                                                                                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                                                                                                                child: ElevatedButton(
-                                                                                                                    // color: const Color.fromARGB(
-                                                                                                                    //     255, 2, 228, 119),
-                                                                                                                    child: const Text(
-                                                                                                                      'Submit',
-                                                                                                                      style: TextStyle(fontSize: 17, color: Colors.white),
+                                                                                                                padding: const EdgeInsets.all(0),
+                                                                                                                margin: const EdgeInsets.all(0),
+                                                                                                                child: Column(
+                                                                                                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                                                  children: [
+                                                                                                                    weightValue.toString() != 'Direct Weight'
+                                                                                                                        ? SizedBox()
+                                                                                                                        : const Text(
+                                                                                                                            'Remark',
+                                                                                                                            style: const TextStyle(fontSize: 20),
+                                                                                                                          ),
+                                                                                                                    weightValue.toString() != 'Direct Weight'
+                                                                                                                        ? SizedBox()
+                                                                                                                        : const SizedBox(
+                                                                                                                            height: 10,
+                                                                                                                          ),
+                                                                                                                    weightValue.toString() != 'Direct Weight'
+                                                                                                                        ? SizedBox()
+                                                                                                                        : Container(
+                                                                                                                            height: 50,
+                                                                                                                            decoration: BoxDecoration(color: const Color.fromARGB(255, 243, 241, 241), borderRadius: BorderRadius.circular(0)),
+                                                                                                                            child: TextFormField(
+                                                                                                                              controller: RemarksController,
+                                                                                                                              // obscureText: true,
+                                                                                                                              decoration: InputDecoration(
+                                                                                                                                  fillColor: Color.fromARGB(255, 247, 252, 249),
+                                                                                                                                  filled: true,
+
+                                                                                                                                  // border: OutlineInputBorder(
+                                                                                                                                  //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                                                                                                                                  // hintText: 'User Type',
+                                                                                                                                  border: InputBorder.none),
+
+                                                                                                                              // keyboardType: TextInputType.number,
+                                                                                                                            ),
+                                                                                                                          ),
+
+                                                                                                                    //   ),
+                                                                                                                    // ),
+                                                                                                                    //       ])
+                                                                                                                    //        ) ])
+                                                                                                                    //             // ]
+                                                                                                                    //             ),
+                                                                                                                    //         // )
+                                                                                                                    //       ]),
+                                                                                                                    //     )
+                                                                                                                    //   ]),
+                                                                                                                    // ),
+                                                                                                                    // const SizedBox(
+                                                                                                                    //   height: 10,
+                                                                                                                    // ),
+                                                                                                                    // Container(
+                                                                                                                    //   padding:
+                                                                                                                    //       const EdgeInsets.symmetric(horizontal: 160),
+                                                                                                                    //   child: Row(children: [
+                                                                                                                    //     const Text(
+                                                                                                                    //       "OR",
+                                                                                                                    //       style: TextStyle(
+                                                                                                                    //         fontSize: 20.0,
+                                                                                                                    //       ),
+                                                                                                                    //     ),
+                                                                                                                    //     // Icon(
+                                                                                                                    //     //   Icons.arrow_forward,
+                                                                                                                    //     //   color: Colors.green,
+                                                                                                                    //     // ),
+                                                                                                                    //   ]),
+                                                                                                                    // ),
+                                                                                                                    // const SizedBox(
+                                                                                                                    //   height: 20,
+                                                                                                                    // ),
+                                                                                                                    // Container(
+                                                                                                                    //     height: 50,
+                                                                                                                    //     width: 5,
+                                                                                                                    //     padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
+                                                                                                                    //     child: ElevatedButton.icon(
+                                                                                                                    //       icon: Icon(
+                                                                                                                    //         Icons.camera_enhance,
+                                                                                                                    //         color: Colors.green,
+                                                                                                                    //         size: 30.0,
+                                                                                                                    //       ),
+                                                                                                                    //       label: Text(
+                                                                                                                    //         'Attach Bill',
+                                                                                                                    //         style: TextStyle(fontSize: 17, color: Colors.white),
+                                                                                                                    //       ),
+                                                                                                                    //       onPressed: () {
+                                                                                                                    //         // Share.share('Hello Welcome to FlutterCampus', subject: 'Welcome Message');
+                                                                                                                    //       },
+                                                                                                                    //       style: ElevatedButton.styleFrom(
+                                                                                                                    //         shape: new RoundedRectangleBorder(
+                                                                                                                    //           borderRadius: new BorderRadius.circular(0.0),
+                                                                                                                    //         ),
+                                                                                                                    //       ),
+                                                                                                                    //     )),
+                                                                                                                    const SizedBox(
+                                                                                                                      height: 40,
                                                                                                                     ),
-                                                                                                                    onPressed: () {
-                                                                                                                      if (DateController.text.isEmpty) {
-                                                                                                                        Fluttertoast.showToast(msg: 'Enter date');
-                                                                                                                      } else if (weightValue.toString() == 'null') {
-                                                                                                                        Fluttertoast.showToast(msg: 'weighttype Enter Value');
-                                                                                                                      } else if (NetweightController.text.isEmpty) {
-                                                                                                                        Fluttertoast.showToast(msg: 'Netweigh Enter Value');
-                                                                                                                      } else if (RateController.text.isEmpty) {
-                                                                                                                        Fluttertoast.showToast(msg: 'Rate Enter Value');
-                                                                                                                      } else if (totalamontController.text.isEmpty) {
-                                                                                                                        Fluttertoast.showToast(msg: 'totalamont Enter Value');
-                                                                                                                      } else {
-                                                                                                                        if (weightValue == 'Manual Weight') {
-                                                                                                                          if (GrossweightController.text.isEmpty) {
-                                                                                                                            Fluttertoast.showToast(msg: 'Grossweight Enter Value');
-                                                                                                                          } else if (GunnyBagsweightController.text.isEmpty) {
-                                                                                                                            Fluttertoast.showToast(msg: 'GunnyBagsweigh Enter Value');
-                                                                                                                          } else {
-                                                                                                                            if (Quotationdata != null) {
-                                                                                                                              editQuotation(
-                                                                                                                                DateController.text,
-                                                                                                                                weightValue,
-                                                                                                                                NetweightController.text,
-                                                                                                                                RateController.text,
-                                                                                                                                totalamontController.text,
-                                                                                                                                GrossweightController.text,
-                                                                                                                                GunnyBagsweightController.text,
-                                                                                                                                RemarksController.text,
-                                                                                                                              );
+                                                                                                                    // weightValue.toString() != 'Manual Weight'
+                                                                                                                    //                         ? SizedBox()
+                                                                                                                    //                         :
+                                                                                                                    Container(
+                                                                                                                      height: 50,
+                                                                                                                      width: 110,
+                                                                                                                      padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                                                                                                                      child: ElevatedButton(
+                                                                                                                          // color: const Color.fromARGB(
+                                                                                                                          //     255, 2, 228, 119),
+                                                                                                                          child: const Text(
+                                                                                                                            'Submit',
+                                                                                                                            style: TextStyle(fontSize: 17, color: Colors.white),
+                                                                                                                          ),
+                                                                                                                          onPressed: () {
+                                                                                                                            if (DateController.text.isEmpty) {
+                                                                                                                              Fluttertoast.showToast(msg: 'Enter date');
+                                                                                                                            } else if (weightValue.toString() == 'null') {
+                                                                                                                              Fluttertoast.showToast(msg: 'weighttype Enter Value');
+                                                                                                                            } else if (NetweightController.text.isEmpty) {
+                                                                                                                              Fluttertoast.showToast(msg: 'Netweigh Enter Value');
+                                                                                                                            } else if (RateController.text.isEmpty) {
+                                                                                                                              Fluttertoast.showToast(msg: 'Rate Enter Value');
+                                                                                                                            } else if (totalamontController.text.isEmpty) {
+                                                                                                                              Fluttertoast.showToast(msg: 'totalamont Enter Value');
                                                                                                                             } else {
-                                                                                                                              loginapi(
-                                                                                                                                DateController.text,
-                                                                                                                                weightValue,
-                                                                                                                                NetweightController.text,
-                                                                                                                                RateController.text,
-                                                                                                                                totalamontController.text,
-                                                                                                                                null,
-                                                                                                                                null,
-                                                                                                                                RemarksController.text,
-                                                                                                                              );
+                                                                                                                              if (weightValue == 'Manual Weight') {
+                                                                                                                                if (GrossweightController.text.isEmpty) {
+                                                                                                                                  Fluttertoast.showToast(msg: 'Grossweight Enter Value');
+                                                                                                                                } else if (GunnyBagsweightController.text.isEmpty) {
+                                                                                                                                  Fluttertoast.showToast(msg: 'GunnyBagsweigh Enter Value');
+                                                                                                                                } else {
+                                                                                                                                  if (Quotationdata != null) {
+                                                                                                                                    editQuotation(
+                                                                                                                                      DateController.text,
+                                                                                                                                      weightValue,
+                                                                                                                                      NetweightController.text,
+                                                                                                                                      RateController.text,
+                                                                                                                                      totalamontController.text,
+                                                                                                                                      GrossweightController.text,
+                                                                                                                                      GunnyBagsweightController.text,
+                                                                                                                                      RemarksController.text,
+                                                                                                                                    );
+                                                                                                                                  } else {
+                                                                                                                                    loginapi(
+                                                                                                                                      DateController.text,
+                                                                                                                                      weightValue,
+                                                                                                                                      NetweightController.text,
+                                                                                                                                      RateController.text,
+                                                                                                                                      totalamontController.text,
+                                                                                                                                      null,
+                                                                                                                                      null,
+                                                                                                                                      RemarksController.text,
+                                                                                                                                    );
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              } else {
+                                                                                                                                if (Quotationdata != null) {
+                                                                                                                                  editQuotation(
+                                                                                                                                    DateController.text,
+                                                                                                                                    weightValue,
+                                                                                                                                    NetweightController.text,
+                                                                                                                                    RateController.text,
+                                                                                                                                    totalamontController.text,
+                                                                                                                                    GrossweightController.text,
+                                                                                                                                    GunnyBagsweightController.text,
+                                                                                                                                    RemarksController.text,
+                                                                                                                                  );
+                                                                                                                                } else {
+                                                                                                                                  loginapi(
+                                                                                                                                    DateController.text,
+                                                                                                                                    weightValue,
+                                                                                                                                    NetweightController.text,
+                                                                                                                                    RateController.text,
+                                                                                                                                    totalamontController.text,
+                                                                                                                                    RemarksController.text,
+                                                                                                                                    null,
+                                                                                                                                    null,
+                                                                                                                                  );
+                                                                                                                                }
+                                                                                                                              }
+
+                                                                                                                              print(weightValue);
+                                                                                                                              DateController.clear();
+                                                                                                                              NetweightController.clear();
+                                                                                                                              RateController.clear();
+                                                                                                                              totalamontController.clear();
+                                                                                                                              GrossweightController.clear();
+                                                                                                                              GunnyBagsweightController.clear();
+                                                                                                                              RemarksController.clear();
                                                                                                                             }
-                                                                                                                          }
-                                                                                                                        } else {
-                                                                                                                          if (Quotationdata != null) {
-                                                                                                                            editQuotation(
-                                                                                                                              DateController.text,
-                                                                                                                              weightValue,
-                                                                                                                              NetweightController.text,
-                                                                                                                              RateController.text,
-                                                                                                                              totalamontController.text,
-                                                                                                                              GrossweightController.text,
-                                                                                                                              GunnyBagsweightController.text,
-                                                                                                                              RemarksController.text,
-                                                                                                                            );
-                                                                                                                          } else {
-                                                                                                                            loginapi(
-                                                                                                                              DateController.text,
-                                                                                                                              weightValue,
-                                                                                                                              NetweightController.text,
-                                                                                                                              RateController.text,
-                                                                                                                              totalamontController.text,
-                                                                                                                              RemarksController.text,
-                                                                                                                              null,
-                                                                                                                              null,
-                                                                                                                            );
-                                                                                                                          }
-                                                                                                                        }
 
-                                                                                                                        print(weightValue);
-                                                                                                                        DateController.clear();
-                                                                                                                        NetweightController.clear();
-                                                                                                                        RateController.clear();
-                                                                                                                        totalamontController.clear();
-                                                                                                                        GrossweightController.clear();
-                                                                                                                        GunnyBagsweightController.clear();
-                                                                                                                        RemarksController.clear();
-                                                                                                                      }
+                                                                                                                            // print(nameController.text);
+                                                                                                                            // print(passwordController.text);
+                                                                                                                          }),
+                                                                                                                    )
+                                                                                                                    // const SizedBox(
+                                                                                                                    //   height: 40,
+                                                                                                                    // ),
+                                                                                                                    //  weightValue.toString() != 'Direct Weight'
+                                                                                                                    //                         ? SizedBox()
+                                                                                                                    //                         :
+                                                                                                                    //                         Container(
+                                                                                                                    //   height: 50,
+                                                                                                                    //   width: 110,
 
-                                                                                                                      // print(nameController.text);
-                                                                                                                      // print(passwordController.text);
-                                                                                                                    }),
+                                                                                                                    //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                                                                                                                    //   child:
+                                                                                                                    //   ElevatedButton(
+                                                                                                                    //       // color: const Color.fromARGB(
+                                                                                                                    //       //     255, 2, 228, 119),
+                                                                                                                    //       child:
+                                                                                                                    //       const Text(
+                                                                                                                    //         'Submit',
+                                                                                                                    //         style: TextStyle(fontSize: 17, color: Colors.white),
+                                                                                                                    //       ),
+                                                                                                                    //       onPressed: () {
+                                                                                                                    //         if (weightValue.toString() == 'null') {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter categeri');
+                                                                                                                    //         } else if (GrossweightController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter Value');
+                                                                                                                    //         } else if (GunnyBagsweightController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter Value');
+                                                                                                                    //         } else if (NetweightController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter Value');
+                                                                                                                    //         } else if (RateController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter Value');
+                                                                                                                    //         } else if (totalamontController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter Value');
+                                                                                                                    //         } else if (DateController.text.isEmpty) {
+                                                                                                                    //           Fluttertoast.showToast(msg: 'Enter date');
+                                                                                                                    //         } else {
+                                                                                                                    //           loginapi(
+                                                                                                                    //             weightValue,
+
+                                                                                                                    //             netweightController.text,
+                                                                                                                    //             rateController.text,
+                                                                                                                    //             TotalamontController.text,
+                                                                                                                    //             dateController.text,
+                                                                                                                    //           );
+                                                                                                                    //           print(weightValue);
+                                                                                                                    //           TotalamontController.clear();
+                                                                                                                    //           rateController.clear();
+                                                                                                                    //           netweightController.clear();
+
+                                                                                                                    //           dateController.clear();
+
+                                                                                                                    //         }
+
+                                                                                                                    //         // print(nameController.text);
+                                                                                                                    //         // print(passwordController.text);
+                                                                                                                    //       }),
+                                                                                                                    // ),
+                                                                                                                  ],
+                                                                                                                ),
                                                                                                               )
-                                                                                                              // const SizedBox(
-                                                                                                              //   height: 40,
-                                                                                                              // ),
-                                                                                                              //  weightValue.toString() != 'Direct Weight'
-                                                                                                              //                         ? SizedBox()
-                                                                                                              //                         :
-                                                                                                              //                         Container(
-                                                                                                              //   height: 50,
-                                                                                                              //   width: 110,
-
-                                                                                                              //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                                                                                                              //   child:
-                                                                                                              //   ElevatedButton(
-                                                                                                              //       // color: const Color.fromARGB(
-                                                                                                              //       //     255, 2, 228, 119),
-                                                                                                              //       child:
-                                                                                                              //       const Text(
-                                                                                                              //         'Submit',
-                                                                                                              //         style: TextStyle(fontSize: 17, color: Colors.white),
-                                                                                                              //       ),
-                                                                                                              //       onPressed: () {
-                                                                                                              //         if (weightValue.toString() == 'null') {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter categeri');
-                                                                                                              //         } else if (GrossweightController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter Value');
-                                                                                                              //         } else if (GunnyBagsweightController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter Value');
-                                                                                                              //         } else if (NetweightController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter Value');
-                                                                                                              //         } else if (RateController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter Value');
-                                                                                                              //         } else if (totalamontController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter Value');
-                                                                                                              //         } else if (DateController.text.isEmpty) {
-                                                                                                              //           Fluttertoast.showToast(msg: 'Enter date');
-                                                                                                              //         } else {
-                                                                                                              //           loginapi(
-                                                                                                              //             weightValue,
-
-                                                                                                              //             netweightController.text,
-                                                                                                              //             rateController.text,
-                                                                                                              //             TotalamontController.text,
-                                                                                                              //             dateController.text,
-                                                                                                              //           );
-                                                                                                              //           print(weightValue);
-                                                                                                              //           TotalamontController.clear();
-                                                                                                              //           rateController.clear();
-                                                                                                              //           netweightController.clear();
-
-                                                                                                              //           dateController.clear();
-
-                                                                                                              //         }
-
-                                                                                                              //         // print(nameController.text);
-                                                                                                              //         // print(passwordController.text);
-                                                                                                              //       }),
-                                                                                                              // ),
                                                                                                             ],
                                                                                                           ),
                                                                                                         )
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  )
+                                                                                                      ]))
                                                                                                 ]))
                                                                                           ]))
                                                                                     ]))
@@ -1377,7 +1333,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
                                           ]))
                                 ]))
                           ]))
-                    ]))]))));
+                    ]))));
 
     //                           )
     //                     ]))
@@ -1409,7 +1365,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
       'total_amount': totalamont,
       'gross_weight': Grossweight ?? '',
       'gunny_bag_weight': GunnyBagsweight ?? '',
-      'Remarks':Remarks,
+      'Remarks': Remarks,
       'user': id.toString(),
     });
 
@@ -1445,7 +1401,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
         GrossweightController.text = Quotationdata["gross_weight"] ?? '';
         GunnyBagsweightController.text =
             Quotationdata["gunny_bag_weight"] ?? '';
-            RemarksController.text = Quotationdata["remarks"];
+        RemarksController.text = Quotationdata["remarks"];
       });
 
       //     ad_banner=decodeValue['data']['main_banner'];
@@ -1476,7 +1432,7 @@ class _SubDealerquote2State extends State<SubDealerquote2> {
       'total_amount': totalamont,
       'gross_weight': Grossweight ?? '',
       'gunny_bag_weight': GunnyBagsweight ?? '',
-      'Remarks':Remarks,
+      'Remarks': Remarks,
       'user': widget.userid.toString(),
     });
 

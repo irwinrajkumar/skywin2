@@ -733,7 +733,7 @@ class _SubDealerquoteState extends State<SubDealerquote> {
                                                                                           borderRadius: BorderRadius.circular(0),
                                                                                         ),
                                                                                         child: TextFormField(
-                                                                                          enabled: true,
+                                                                                          readOnly: true,
                                                                                           controller: DateController,
                                                                                           decoration: InputDecoration(
                                                                                               fillColor: Colors.white,
@@ -1064,7 +1064,7 @@ class _SubDealerquoteState extends State<SubDealerquote> {
                                                                                                                   borderRadius: BorderRadius.circular(0),
                                                                                                                 ),
                                                                                                                 child: TextFormField(
-                                                                                                                  enabled: true,
+                                                                                                                  readOnly: true,
                                                                                                                   controller: DateController,
                                                                                                                   decoration: InputDecoration(
                                                                                                                       fillColor: Colors.white,

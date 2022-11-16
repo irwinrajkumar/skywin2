@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'color code.dart';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,8 +39,6 @@ var name;
 // var userid;
 // var total;
 
-// var baseurl = "http://194.163.43.178:8000/Manual_weight/";
-// final TextEditingController nameController = new TextEditingController();
 class subdealerhome extends StatefulWidget {
   String userid;
   // String name;
@@ -96,8 +95,9 @@ class _subdealerhomeState extends State<subdealerhome> {
   }
 
   Widget build(BuildContext context) {
+    mediaSize(context);
     return Scaffold(
-       backgroundColor: Color.fromARGB(255, 238, 237, 237),
+        backgroundColor: Color.fromARGB(255, 238, 237, 237),
         drawer: Drawer(
           child: ListView(
             // padding: EdgeInsets.zero,
@@ -106,61 +106,67 @@ class _subdealerhomeState extends State<subdealerhome> {
                 height: 80,
                 child: DrawerHeader(
                     child: Column(children: [
-                  Row(children: [
-                    CircleAvatar(
-                        backgroundColor: Color.fromARGB(255, 118, 218, 4),
-                        child: TextButton(
-                            onPressed: () {
-                              // Navigator.of(context).pop();
-                              // Navigator.push(context,MaterialPageRoute(builder: (context) => const adminprofile()),);
-                            },
-                            child: name != null
-                                ? Text(
-                                    "${name[0]}${name[1]}".toUpperCase(),
-                                  )
-                                : Container())),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('${name}'.toString(),
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 73, 34, 34),
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    
-                    SizedBox(
-                      width: 80,
-                    ),
-                    Container(
-                      // height: 35,
-                      width: 65,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ElevatedButton(
-                        // color: Color.fromARGB(255, 12, 12, 12),
-                        child: const Text(
-                          'Edit',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 219, 217, 217)),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(children: [
+                        CircleAvatar(
+                            backgroundColor: Color.fromARGB(255, 118, 218, 4),
+                            child: TextButton(
+                                onPressed: () {
+                                  // Navigator.of(context).pop();
+                                  // Navigator.push(context,MaterialPageRoute(builder: (context) => const adminprofile()),);
+                                },
+                                child: name != null
+                                    ? Text(
+                                        "${name[0]}${name[1]}".toUpperCase(),
+                                      )
+                                    : Container())),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('${name}'.toString(),
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 73, 34, 34),
+                                fontWeight: FontWeight.bold,
+                              )),
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const editprofile()),
-                          ).then((value) {
-                            imgdata();
-                            subdealer();
-                            balance();
-                          });
-                          // print(nameController.text);
-                          // print(passwordController.text);
-                        },
-                      ),
-                    )
-                  ])
+                        
+                        
+                      ]),
+                      Row(
+                        children: [
+                          Container(
+                              // height: 35,
+                              width: 65,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: ElevatedButton(
+                                // color: Color.fromARGB(255, 12, 12, 12),
+                                child: const Text(
+                                  'Edit',
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 219, 217, 217)),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const editprofile()),
+                                  ).then((value) {
+                                    imgdata();
+                                    subdealer();
+                                    balance();
+                                  });
+                                  // print(nameController.text);
+                                  // print(passwordController.text);
+                                },
+                              ),
+                            ),
+                        ],
+                      )
+                    ],
+                  )
                 ])),
               ),
               ListTile(
@@ -226,11 +232,17 @@ class _subdealerhomeState extends State<subdealerhome> {
                         TextButton(
                           child: Text('OK'),
                           onPressed: () async {
-                            var pref = await SharedPreferences.getInstance();
-                            await pref.clear();
-                            Navigator.of(context).pushReplacement(
-                              CupertinoPageRoute(builder: (context) => login()),
-                            );
+                            SharedPreferences pref =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        pref.clear();
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        login()),
+                                                (Route<dynamic> route) =>
+                                                    false);
                           },
                         ),
                       ],
@@ -240,8 +252,6 @@ class _subdealerhomeState extends State<subdealerhome> {
               ),
             ],
           ),
-
-         
 
           // drawer: profilesubdearler(),
         ),
@@ -296,8 +306,8 @@ class _subdealerhomeState extends State<subdealerhome> {
                     // flex: 1,
                     // fit: FlexFit.tight,
                     child: Container(
-                    width: MediaQuery.of(context).size.width * 15,
-                      height: MediaQuery.of(context).size.height *.12,
+                      width: MediaQuery.of(context).size.width * 15,
+                      height: MediaQuery.of(context).size.height * .12,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Colors.white,
@@ -343,9 +353,9 @@ class _subdealerhomeState extends State<subdealerhome> {
                                   ),
                                   SizedBox(width: 10),
                                   Text(
-                                    'You will get',
+                                    'பெற வேண்டியது',
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 8,
                                     ),
                                   )
                                 ],
@@ -364,7 +374,7 @@ class _subdealerhomeState extends State<subdealerhome> {
                     // fit: FlexFit.loose,
                     child: Container(
                       width: MediaQuery.of(context).size.width * 5,
-                      height: MediaQuery.of(context).size.height *.12,
+                      height: MediaQuery.of(context).size.height * .12,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Colors.white,
@@ -407,9 +417,9 @@ class _subdealerhomeState extends State<subdealerhome> {
                                   ),
                                   SizedBox(width: 10),
                                   Text(
-                                    'You will give',
+                                    'கொடுக்க வேண்டியது',
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 8,
                                     ),
                                   )
                                 ],
@@ -421,58 +431,13 @@ class _subdealerhomeState extends State<subdealerhome> {
                     ),
                   ),
                 ]),
-                // SizedBox(
-                //   height: 5,
-                // ),
-                // Container(
-                //   child: Row(children: [
-                //     Container(
-                //       width: 260,
-                //       height: 40,
-                //       decoration: BoxDecoration(
-                //           color: Colors.white,
-                //           borderRadius: BorderRadius.circular(0)),
-                //       child: TextField(
-                //         decoration: InputDecoration(
-                //             prefixIcon: Image.asset('assets/search.png'),
-                //             // suffixIcon: IconButton(
-                //             //   icon: Icon(Icons.clear),
-                //             //   onPressed: () {
-                //             //     /* Clear the search field */
-                //             //   },
-                //             // ),
-                //             hintText: 'search...',
-                //             border: InputBorder.none),
-                //       ),
-                //     ),
-                //     IconButton(
-                //       icon: Image(
-                //         image: AssetImage("assets/filter.png"),
-                //       ),
-                //       onPressed: () {
-                //         // _tripEditModalBottonSheet(context);
-                //       },
-                //     ),
-                //     IconButton(
-                //         onPressed: () {},
-                //         icon: Image(
-                //           image: AssetImage("assets/pdf.png"),
-                //         ))
-                //   ]),
-                // ),
+                //
                 SizedBox(
                   height: 20,
                 ),
 
                 Container(
                   padding: EdgeInsets.all(10),
-                  // margin: EdgeInsets.fromLTRB(
-                  //   0,
-                  //   0,
-                  //   0,
-                  //   0,
-                  // ),
-                  // height: 45,
                   width: MediaQuery.of(context).size.width * .89,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -487,13 +452,7 @@ class _subdealerhomeState extends State<subdealerhome> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        // mainAxisSize: MainAxisSize.max,
-                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          // Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-                          // hintText:
-                          //     '${_dateTime.day}-${_dateTime.month}-${_dateTime.year}',
-
                           Text(
                             'ENTRIES',
                             style: TextStyle(
@@ -526,10 +485,10 @@ class _subdealerhomeState extends State<subdealerhome> {
                 ),
 
                 SizedBox(
-                  height: 0,
+                  height: 10,
                 ),
                 Container(
-                  height: Get.height / 1.7,
+                  height: height_ / 1.7,
                   // width: 360,
                   child: ListView.builder(
                       itemCount: fetchdata.length,
@@ -573,15 +532,15 @@ class _subdealerhomeState extends State<subdealerhome> {
                                       color: Colors.black,
                                       blurRadius: 5.0,
                                     ),
-                                  ]
-                                  ),
+                                  ]),
                               // color: Colors.white,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width * .45,
+                                    width:
+                                        MediaQuery.of(context).size.width * .45,
                                     child: Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Column(
@@ -721,175 +680,9 @@ class _subdealerhomeState extends State<subdealerhome> {
                                 ],
                               ),
                             ),
-                            //            Container(
-                            //             // margin: new EdgeInsets.symmetric(horizontal: 0),
-                            //             // padding: EdgeInsets.symmetric(horizontal: 0),
-                            //             // height: 90,
-                            //             // width: 349,
-                            //             decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.all(
-                            //           Radius.circular(10)),
-                            //       color: Colors.white,
-                            //       boxShadow: [
-                            //           new BoxShadow(
-                            //             color: Colors.black,
-                            //             blurRadius: 5.0,
-                            //           ),
-                            //         ]
-                            // ),
-                            //             child: Padding(
-                            //               padding:
-                            //                   const EdgeInsets.all(10.0),
-                            //               child: Column(
-                            //                 children: [
-                            //                   Row(
-                            //                     mainAxisAlignment:
-                            //                         MainAxisAlignment
-                            //                             .spaceBetween,
-                            //                     children: [
-                            //                       Row(
-                            //                         children: [
-                            //                           Text(
-                            //                             "${fetchdata[index]['date'] ?? '0'}",
-                            //                             // '08 Jan 22 • 08.51 PM',
-                            //                             style: TextStyle(
-                            //                                 fontSize: 15),
-                            //                           ),
-
-                            //                           // SizedBox(
-                            //                           //   width: 10,
-                            //                           //   height: 60,
-                            //                           // ),
-                            //                           // CircleAvatar(
-                            //                           //   backgroundColor:
-                            //                           //       Color.fromARGB(
-                            //                           //           255, 118, 218, 4),
-                            //                           //   child: Text(
-                            //                           //     "Je",
-                            //                           //     style: TextStyle(
-                            //                           //         fontSize: 17,
-                            //                           //         color: Colors.black),
-                            //                           //   ),
-                            //                           // ),
-                            //                         ],
-                            //                       ),
-                            //                       Row(
-                            //                         children: [
-                            //                           fetchdata[index][
-                            //                                       'paid_amount'] ==
-                            //                                   null
-                            //                               ? Text('')
-                            //                               : Text(
-                            //                                   '₹',
-                            //                                   style: TextStyle(
-                            //                                       fontSize:
-                            //                                           18,
-                            //                                       color: Colors
-                            //                                           .red),
-                            //                                 ),
-                            //                           Text(
-                            //                             "${fetchdata[index]['paid_amount'] ?? ''}",
-                            //                             style: TextStyle(
-                            //                                 fontSize: 18,
-                            //                                 color: Colors
-                            //                                     .red),
-                            //                           ),
-                            //                         ],
-                            //                       ),
-                            //                       Row(
-                            //                         children: [
-                            //                           fetchdata[index][
-                            //                                       'total_amount'] ==
-                            //                                   null
-                            //                               ? Text('')
-                            //                               : Text('₹',
-                            //                                   style: TextStyle(
-                            //                                       fontSize:
-                            //                                           18,
-                            //                                       color: Colors
-                            //                                           .green)),
-                            //                           Text(
-                            //                             "${fetchdata[index]['total_amount'] ?? ''}",
-                            //                             style: TextStyle(
-                            //                                 fontSize: 18,
-                            //                                 color: Colors
-                            //                                     .green),
-                            //                           ),
-                            //                         ],
-                            //                       ),
-                            //                     ],
-                            //                   ),
-                            //                   Padding(
-                            //                     padding:
-                            //                         const EdgeInsets.only(
-                            //                             top: 10),
-                            //                     child: fetchdata[index]['net_weight'] != null ? Row(
-                            //                       children: [
-                            //                         Text(
-                            //                           'Net Weight =',
-                            //                           style: TextStyle(
-                            //                               fontSize: 12,
-                            //                               color: Colors
-                            //                                   .black),
-                            //                         ),
-                            //                         Text(
-                            //                               "${fetchdata[index]['net_weight']}",
-
-                            //                           style: TextStyle(
-                            //                               fontSize: 12,
-                            //                               color: Colors
-                            //                                   .black),
-                            //                         ),
-                            //                         Text(
-                            //                           'kg',
-                            //                           style: TextStyle(
-                            //                               fontSize: 12,
-                            //                               color: Colors
-                            //                                   .black),
-                            //                         )
-                            //                       ],
-                            //                     )
-
-                            //                   : Row(
-                            //                       children: [
-                            //                         Text("${fetchdata[index]['farmer_name'].toString()}"),
-                            //                       ],
-                            //                     ),
-                            //                   ),
-                            //                   fetchdata[index]['rate'] != null ? Padding(
-                            //                     padding:
-                            //                         const EdgeInsets.only(
-                            //                             right: 10),
-                            //                     child: Row(
-                            //                       children: [
-                            //                         Text(
-                            //                           'Rate=',
-                            //                           style: TextStyle(
-                            //                               fontSize: 12,
-                            //                               color: Colors
-                            //                                   .black),
-                            //                         ),
-                            //                         Text(
-                            //                           "${fetchdata[index]['rate'] ?? '0'}",
-                            //                           style: TextStyle(
-                            //                               fontSize: 12,
-                            //                               color: Colors
-                            //                                   .black),
-                            //                         ),
-                            //                       ],
-                            //                     ),
-                            //                   ):Text(""),
-                            //               fetchdata[index]['remarks'] != null ?      Row(
-                            //                     children: [
-
-                            //                        Text("${fetchdata[index]['remarks'] ?? '0'}",
-                            //                        )
-                            //                     ],
-                            //                   ):Text(""),
-                            //                 ],
-                            //               ),
-                            //             ),
-                            //           ),
+                          ),
+                          SizedBox(
+                            height: 10,
                           )
                         ]);
                       }),

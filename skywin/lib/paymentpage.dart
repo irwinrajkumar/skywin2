@@ -90,245 +90,245 @@ class _paymentState extends State<payment> {
               ),
             ),
             body: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(children: [
-                Container(
-                  width: 350,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color.fromARGB(255, 41, 6, 241),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextFormField(
-                    controller: paymentController,
-                    // initialValue: '+91  ',
-                    autofocus: false,
-                    decoration: InputDecoration(
-                      prefixText: '₹',
-                      prefixStyle: TextStyle(color: Colors.red),
-                      fillColor: Color.fromARGB(255, 247, 252, 249),
-                      filled: true,
-
-                      // border: OutlineInputBorder(
-                      //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                      hintText: ' Enter payment amonts',
-                      // border: InputBorder.none
-                    ),
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 350,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color.fromARGB(255, 41, 6, 241),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextFormField(
-                    controller: nameController,
-                    // initialValue: '+91  ',
-                    // autofocus: false,
-                    decoration: InputDecoration(
-                      // prefixText: '₹',
-                      // prefixStyle: TextStyle(color: Colors.red),
-                      fillColor: Color.fromARGB(255, 247, 252, 249),
-                      filled: true,
-
-                      // border: OutlineInputBorder(
-                      //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                      hintText: ' Name',
-                      // border: InputBorder.none
-                    ),
-                    // keyboardType: TextInputType.number,
-                  ),
-                ),
-                // Container(
-
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                //     children: [
-                //       //   weightValue.toString() !=
-                //       //     'Direct Weight'
-                //       // ? SizedBox()
-                //       // :
-                //       const Text(
-                //         'Date',
-                //         style: const TextStyle(fontSize: 20),
-                //       ),
-                //       //    weightValue.toString() !=
-                //       //     'Direct Weight'
-                //       // ? SizedBox()
-                //       // :
-                //       const SizedBox(
-                //         height: 10,
-                //       ),
-                //       //    weightValue.toString() !=
-                //       //     'Direct Weight'
-                //       // ? SizedBox()
-                // :
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(0),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 350,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromARGB(255, 41, 6, 241),
+                          width: 2,
                         ),
-                        child: TextFormField(
-                          enabled: true,
-                          controller: dateController,
-                          decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              contentPadding: EdgeInsets.all(13),
-                              // labelText: '${date.year}/${date.month}/${date.day}',
-                              // labelStyle: const TextStyle(fontSize: 16, fontFamily: "palatino", color: Colors.black),
-                              // fillColor: Color.fromARGB(255, 247, 252, 249),
-                              // filled: true,
-                              suffixIcon: Align(
-                                widthFactor: 0.0,
-                                heightFactor: 1.0,
-                                child: IconButton(
-                                    onPressed: () async {
-                                      DateTime? newDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(1900),
-                                        lastDate: DateTime.now(),
-                                      );
-                                      if (newDate == null) return;
-                                      setState(() {
-                                        date = newDate;
-                                        dateController.text =
-                                            DateFormat('yyyy-MM-dd')
-                                                .format(newDate);
-                                      });
-                                    },
-                                    icon: Icon(Icons.calendar_month)),
-                              ),
-                              // enabled: false,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: TextFormField(
+                        controller: paymentController,
+                        // initialValue: '+91  ',
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          prefixText: '₹',
+                          prefixStyle: TextStyle(color: Colors.red),
+                          fillColor: Color.fromARGB(255, 247, 252, 249),
+                          filled: true,
 
-                              // border: OutlineInputBorder(
-                              //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                              hintText: 'Date',
-                              border: InputBorder.none),
-                          // ),
+                          // border: OutlineInputBorder(
+                          //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                          hintText: ' Enter payment amonts',
+                          // border: InputBorder.none
                         ),
+                        keyboardType: TextInputType.number,
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      // Container(
-                      //   padding: const EdgeInsets.all(0),
-                      //   margin: const EdgeInsets.all(0),
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                      //     children: [
-                      //       const Text(
-                      //         'Remark',
-                      //         style: const TextStyle(fontSize: 20),
-                      //       ),
-                      //       const SizedBox(
-                      //         height: 10,
-                      //       ),
-                            Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 243, 241, 241),
-                                  borderRadius: BorderRadius.circular(0)),
-                              child: TextFormField(
-                                controller: RemarksController,
-                                // obscureText: true,
-                                decoration: InputDecoration(
-                                    fillColor:
-                                        Color.fromARGB(255, 247, 252, 249),
-                                    filled: true,
-
-                                    // border: OutlineInputBorder(
-                                    //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
-                                    hintText: 'Remarks',
-                                    border: InputBorder.none),
-
-                                // keyboardType: TextInputType.number,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 390,
-                            ),
-                            Container(
-                              // height: 50,
-                              width: 350,
-                              // padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.red, // background
-                                  // onPrimary: Colors.yellow, // foreground
-                                ),
-                                // color: const Color.fromARGB(
-                                // 255, 2, 228, 119),
-                                child: const Text(
-                                  'SAVE',
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.white),
-                                ),
-                                onPressed: () {
-                                  if (paymentController.text.isEmpty) {
-                                    Fluttertoast.showToast(msg: 'Enter value');
-                                  } else if (nameController.text.isEmpty) {
-                                    Fluttertoast.showToast(msg: 'Enter name');
-                                  } else if (dateController.text.isEmpty) {
-                                    Fluttertoast.showToast(msg: 'Enter date');
-                                  } else if (RemarksController.text.isEmpty) {
-                                    Fluttertoast.showToast(msg: 'Remarks date');
-                                  } 
-                                  else {
-                                    loginapi(
-                                      // weightValue,
-                                      paymentController.text,
-                                      nameController.text,
-                                      dateController.text,
-                                      RemarksController.text,
-                                    );
-                                    print(loginapi);
-                                    paymentController.clear();
-                                    nameController.clear();
-                                    dateController.clear();
-                                    RemarksController.clear();
-                                  }
-
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //       builder: (context) =>
-                                  //           const payment()),
-                                  // ); // print(nameController.text);
-                                  // print(passwordController.text);
-                                },
-                              ),
-                            ),
-                          ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 350,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromARGB(255, 41, 6, 241),
+                          width: 2,
                         ),
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                    ],
-                  ),
+                      child: TextFormField(
+                        controller: nameController,
+                        // initialValue: '+91  ',
+                        // autofocus: false,
+                        decoration: InputDecoration(
+                          // prefixText: '₹',
+                          // prefixStyle: TextStyle(color: Colors.red),
+                          fillColor: Color.fromARGB(255, 247, 252, 249),
+                          filled: true,
+
+                          // border: OutlineInputBorder(
+                          //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                          hintText: ' Name',
+                          // border: InputBorder.none
+                        ),
+                        // keyboardType: TextInputType.number,
+                      ),
+                    ),
+                    // Container(
+
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    //     children: [
+                    //       //   weightValue.toString() !=
+                    //       //     'Direct Weight'
+                    //       // ? SizedBox()
+                    //       // :
+                    //       const Text(
+                    //         'Date',
+                    //         style: const TextStyle(fontSize: 20),
+                    //       ),
+                    //       //    weightValue.toString() !=
+                    //       //     'Direct Weight'
+                    //       // ? SizedBox()
+                    //       // :
+                    //       const SizedBox(
+                    //         height: 10,
+                    //       ),
+                    //       //    weightValue.toString() !=
+                    //       //     'Direct Weight'
+                    //       // ? SizedBox()
+                    // :
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            child: TextFormField(
+                              controller: dateController,
+                              // keyboardType: TextInputType.phone,
+                              // showCursor: true, //add this line
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  contentPadding: EdgeInsets.all(13),
+                                  // labelText: '${date.year}/${date.month}/${date.day}',
+                                  // labelStyle: const TextStyle(fontSize: 16, fontFamily: "palatino", color: Colors.black),
+                                  // fillColor: Color.fromARGB(255, 247, 252, 249),
+                                  // filled: true,
+                                  suffixIcon: Align(
+                                    widthFactor: 0.0,
+                                    heightFactor: 1.0,
+                                    child: IconButton(
+                                        onPressed: () async {
+                                          DateTime? newDate =
+                                              await showDatePicker(
+                                            context: context,
+                                            initialDate: DateTime.now(),
+                                            firstDate: DateTime(1900),
+                                            lastDate: DateTime.now(),
+                                          );
+                                          if (newDate == null) return;
+                                          setState(() {
+                                            date = newDate;
+                                            dateController.text =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(newDate);
+                                          });
+                                        },
+                                        icon: Icon(Icons.calendar_month)),
+                                  ),
+                                  // enabled: false,
+
+                                  // border: OutlineInputBorder(
+                                  //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                                  hintText: 'Date',
+                                  border: InputBorder.none),
+                              // ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          // Container(
+                          //   padding: const EdgeInsets.all(0),
+                          //   margin: const EdgeInsets.all(0),
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.stretch,
+                          //     children: [
+                          //       const Text(
+                          //         'Remark',
+                          //         style: const TextStyle(fontSize: 20),
+                          //       ),
+                          //       const SizedBox(
+                          //         height: 10,
+                          //       ),
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 243, 241, 241),
+                                borderRadius: BorderRadius.circular(0)),
+                            child: TextFormField(
+                              controller: RemarksController,
+                              // obscureText: true,
+                              decoration: InputDecoration(
+                                  fillColor: Color.fromARGB(255, 247, 252, 249),
+                                  filled: true,
+
+                                  // border: OutlineInputBorder(
+                                  //   borderSide: BorderSide(color: Color.fromARGB(255, 241, 233, 233),width: 1),
+                                  hintText: 'Remarks',
+                                  border: InputBorder.none),
+
+                              // keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Container(
+                            height: 50,
+                            width: 100,
+                            // padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.red, // background
+                                // onPrimary: Colors.yellow, // foreground
+                              ),
+                              // color: const Color.fromARGB(
+                              // 255, 2, 228, 119),
+                              child: const Text(
+                                'SAVE',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              ),
+                              onPressed: () {
+                                if (paymentController.text.isEmpty) {
+                                  Fluttertoast.showToast(msg: 'Enter value');
+                                } else if (nameController.text.isEmpty) {
+                                  Fluttertoast.showToast(msg: 'Enter name');
+                                } else if (dateController.text.isEmpty) {
+                                  Fluttertoast.showToast(msg: 'Enter date');
+                                } else if (RemarksController.text.isEmpty) {
+                                  Fluttertoast.showToast(msg: 'Remarks date');
+                                } else {
+                                  loginapi(
+                                    // weightValue,
+                                    paymentController.text,
+                                    nameController.text,
+                                    dateController.text,
+                                    RemarksController.text,
+                                  );
+                                  print(loginapi);
+                                  paymentController.clear();
+                                  nameController.clear();
+                                  dateController.clear();
+                                  RemarksController.clear();
+                                }
+
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           const payment()),
+                                // ); // print(nameController.text);
+                                // print(passwordController.text);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-        )));
-            
+              ),
+            )));
   }
 
   var baseurl = 'http://194.163.43.178:8000';
@@ -351,7 +351,7 @@ class _paymentState extends State<payment> {
           'paid_amount': paidamount,
           'farmer_name': farmername,
           'date': date,
-          'remarks':remarks,
+          'remarks': remarks,
           'user': id.toString(),
         });
 

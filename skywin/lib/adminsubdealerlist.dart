@@ -109,7 +109,15 @@ class _subdealerlistState extends State<subdealerlist> {
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            new BoxShadow(
+                                              color: Colors.black,
+                                              blurRadius: 5.0,
+                                            ),
+                                          ]
                               ),
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
