@@ -220,17 +220,7 @@ class _adminhomeState extends State<adminhome> {
                   );
                 },
               ),
-              // ListTile(
-              //   title: const Text('Relative'),
-              //   onTap: () {
-              //     Navigator.pop(context);
-              //   },
-              // ),
-              // ListTile(
-              //   title: const Text('Friend'),
-              //   onTap: () {
-              //     Navigator.pop(context);
-              //   },
+             
               // ),
             ],
           ),
